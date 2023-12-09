@@ -12,7 +12,10 @@ import {
   ChevronDown,
   UserPlus,
   Settings,
-  Users, PlusCircle, Trash, LogOut
+  Users,
+  PlusCircle,
+  Trash,
+  LogOut
 } from "lucide-react";
 import {useModal} from "@/hooks/use-modal-store";
 
@@ -84,6 +87,7 @@ export const ServerHeader = ({
         )}
         {isAdmin && (
           <DropdownMenuItem
+            onClick={() => onOpen("editServer", {server})}
             className="px-3 py-2 text-sm cursor-pointer"
           >
             Server Settings
