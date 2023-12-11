@@ -10,6 +10,7 @@ import {Edit, Hash, Lock, Mic, Trash, Video} from "lucide-react";
 import {useParams, useRouter} from "next/navigation";
 import {cn} from "@/lib/utils";
 import {ActionToolTip} from "@/components/action-tooltip";
+import {ModalType, useModal} from "@/hooks/use-modal-store";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -28,6 +29,7 @@ export const ServerChannel = ({
   server,
   role
 }: ServerChannelProps) => {
+  const {onOpen} = useModal()
   const params = useParams();
   const router = useRouter()
 
@@ -52,11 +54,13 @@ export const ServerChannel = ({
         <div className="ml-auto flex items-center gap-x-2">
           <ActionToolTip label="Edit">
             <Edit
+              onClick={() => onOpen("editChannel", {server, channel})}
               className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
             />
           </ActionToolTip>
           <ActionToolTip label="Delete">
             <Trash
+              onClick={() => onOpen("deleteChannel", {server, channel})}
               className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
             />
           </ActionToolTip>
