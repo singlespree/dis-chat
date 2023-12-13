@@ -36,7 +36,7 @@ export const DeleteChannelModal = () => {
             })
 
             await axios.delete(url);
-
+            // Todo: канал удаляется визуально только после мануального обновления страницы. Вероятная проблема: router.refresh()
             onClose();
             router.refresh();
             router.push(`/servers/${server?.id}`);
